@@ -1,6 +1,6 @@
 ---
-title: "Module4Script"
-author: "Jaan Selod (Rated-R)"
+title: "Module 4 Project Report"
+author: "Rated-R (Jaan and Jonah)"
 date: "2023-09-27"
 output: html_document
 bibliography: BIOL3140.bib
@@ -21,31 +21,24 @@ library(rmarkdown)
 library(phytools)
 ```
 
-## R Markdown
+## Introduction:
 
-# Introduction
+  This project explores the allometry and morphology of various ecomorphs within *Anolis*, a genus of reptiles that is remarkably diverse both in species richness and their radiations. An ecomorph is a categorization of multiple species according to their ecological niche, as well as behavior. The anole radiation throughout habitats (including distinct islands and within islands themselves) makes them a useful model organism to study their allometry. The central question here is: **How does hind limb length vary with size?** Other related questions delve further into determining potential predictors of this relationship, and correcting for phylogenetic factors.
 
-Code-bearing text is wrapped in backticks: `ggplot`
+  This will be answered by data analysis, both through direct visualization and model design (and model assessment).
 
-We can also include links, using `[class site](https://bcorgbio.github.io/class/)`, which gives us [class site](https://bcorgbio.github.io/class/)
+<center>![Anolis carolinensis](https://upload.wikimedia.org/wikipedia/commons/5/5a/Anolis_carolinensis.jpg)</center>
 
-To insert a photo, we can say `![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)` which will give us:
 
-![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)
+## Methods:
 
-This image isn't centered on the page - let's use standard HTML tags to modify the position of elements: `<center> [![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg) </center>` will give us:
+  In total, 46 anole species were analyzed morphologically, ecomorphologically, and phylogenetically. Size was approximated as SVL, or snout-vent length, while hind limb length, or HTotal, was measured as the average total hind limb length (from the upper leg to the longest digit). Include equations for models?
 
-<center>[![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)</center>
+## Results:
 
-We can also add local images (in our directory) by name: `<center> ![](svl_small.png) </center>` makes
-
-<center>![](svl_small.png)</center>
 
 To add equations, we use LaTeX: We can write `$$y=\alpha+\beta x$$` to produce: $$y=\alpha+\beta x$$ Notice how the equation is wrapped by two `$$`. A single `$` indicates the use of LaTeX markup and two indicates the equation should stand alone on a separate section
 
-# Methods
-
-# Results
 
 ```{r, "load the data"}
 anole <- read_csv("anole.dat.csv")
