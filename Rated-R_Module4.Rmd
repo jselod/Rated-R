@@ -28,7 +28,9 @@ This project explores the allometry and morphology of various ecomorphs within *
 
 This will be answered by data analysis, both through direct visualization and model design (and model assessment).
 
-<center>[![Anolis carolinensis](https://upload.wikimedia.org/wikipedia/commons/5/5a/Anolis_carolinensis.jpg)](https://upload.wikimedia.org/wikipedia/commons/5/5a/Anolis_carolinensis.jpg)</center>
+<center>
+[![An anolis lizard](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Green_anole.jpg/320px-Green_anole.jpg)
+</center>
 
 ## Methods:
 
@@ -131,24 +133,23 @@ We can also make tables by hand:
 
 # Discussion
 
+Our analysis' findings provide insight into the intriguing association between body size and hind limb length in the diverse genus *Anolis* of lizards, which is noted for its ecological and morphological diversity. Our inquiry into the allometric patterns within this taxon was led by our fundamental question, "How does hind limb length vary with size?" While the framework for our debate is supplied by our statistical models, we must wait for the actual outcomes of our analysis before making any firm judgments. On the basis of our study strategy, we can highlight some potential consequences and hypotheses.
+
+We used phylogenetic models under both Brownian Motion (BM) and Ornstein-Uhlenbeck (OU) processes to analyze the allometric connection between hind limb length (HTotal) and size (SVL) in *Anolis* lizards, taking into account the impact of ecomorph categories. The AIC results offered insightful information about the model fit and made it evident how different approaches differed from one another.Notably, our results show that the model's performance is much enhanced by the inclusion of ecomorph information, as shown by the significantly reduced AIC value in the pgls.BM2 model. This shows that ecomorph is crucial in explaining how the length of the hind limbs varies within the *Anolis* genus. The models (pgls.BM1 and pgls.OU1) that did not include ecomorph information, on the other hand, showed comparably higher AIC values, suggesting that they might not be able to fully capture the underlying patterns in the data. Our findings therefore highlight the significance of taking ecological niches and behaviors, as represented by ecomorphs, into consideration when investigating the allometric connection in *Anolis* lizards.
+
+A boxplot of phylogenetically adjusted hindlimb residuals versus anole ecomorph showed interesting trends. It showed that some ecomorphs have more variety in their hind limb length residuals, indicating that they might have particular adaptations for movement and habitat usage. These differences within the *Anolis* genus might be an indication of selective forces connected to particular ecological niches. Additionally, potential discrepancies in the representation of species across ecomorph categories were highlighted in the table that showed the species count by ecomorph. We must take into account the possibility of biases introduced by such imbalances when interpreting our results. Our first findings opened doors for further research into the complex relationship between body size, ecomorphology, and hind limb length in *Anolis* lizards.
+
 # Author Contributions
+
+- **Jaan**:
+  - Methods
+  - Results
+
+- **Jonah**:
+  - Introduction
+  - Discussion
+  - References
 
 # References
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+[1] Hagey, Travis J, Scott Harte, Mathew Vickers, Luke J Harmon, and Lin Schwarzkopf. 2017. “There’s More Than One Way to Climb a Tree: Limb Length and Microhabitat Use in Lizards with Toe Pads.” *PloS One*, 12(9), e0184641. DOI: [10.1371/journal.pone.0184641](https://doi.org/10.1371/journal.pone.0184641)
