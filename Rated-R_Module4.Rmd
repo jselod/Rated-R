@@ -19,34 +19,36 @@ library(geiger) #for eco analysis
 library(knitr) #for knitting options
 library(rmarkdown)
 library(phytools)
+library(knitr)
 ```
 
 ## Introduction:
 
-  This project explores the allometry and morphology of various ecomorphs within *Anolis*, a genus of reptiles that is remarkably diverse both in species richness and their radiations. An ecomorph is a categorization of multiple species according to their ecological niche, as well as behavior. The anole radiation throughout habitats (including distinct islands and within islands themselves) makes them a useful model organism to study their allometry. The central question here is: **How does hind limb length vary with size?** Other related questions delve further into determining potential predictors of this relationship, and correcting for phylogenetic factors.
+This project explores the allometry and morphology of various ecomorphs within *Anolis*, a genus of reptiles that is remarkably diverse both in species richness and their radiations. An ecomorph is a categorization of multiple species according to their ecological niche, as well as behavior. The anole radiation throughout habitats (including distinct islands and within islands themselves) makes them a useful model organism to study their allometry. The central question here is: **How does hind limb length vary with size?** Other related questions delve further into determining potential predictors of this relationship, and correcting for phylogenetic factors.
 
-  This will be answered by data analysis, both through direct visualization and model design (and model assessment).
+This will be answered by data analysis, both through direct visualization and model design (and model assessment).
 
-<center>![Anolis carolinensis](https://upload.wikimedia.org/wikipedia/commons/5/5a/Anolis_carolinensis.jpg)</center>
-
+<center>[![Anolis carolinensis](https://upload.wikimedia.org/wikipedia/commons/5/5a/Anolis_carolinensis.jpg)](https://upload.wikimedia.org/wikipedia/commons/5/5a/Anolis_carolinensis.jpg)</center>
 
 ## Methods:
 
-  In total, 46 anole species were analyzed morphologically, ecomorphologically, and phylogenetically. Size was approximated as SVL, or snout-vent length, while hind limb length, or HTotal, was measured as the average total hind limb length (from the upper leg to the longest digit). Include equations for models?
+In total, 46 anole species were analyzed morphologically, ecomorphologically, and phylogenetically. Size was approximated as SVL, or snout-vent length, while hind limb length, or HTotal, was measured as the average total hind limb length (from the upper leg to the longest digit). Phylogenetic models were constructed as having traits evolving under either Brownian or Ornstein-Uhlenbeck models, varying independence of co-variables (linear vs. allometric) and analyzed using a phylogenetic generalized least squares (PGLS) procedure.
+
+Linear models follow the format $HTotal=SVL x+\beta$.
+
+Non-linear allometric models follow the format $HTotal=\alpha*SVL^\beta$.
 
 ## Results:
 
+The phylogenetic models were constructed and identified as:
 
-To add equations, we use LaTeX: We can write `$$y=\alpha+\beta x$$` to produce: $$y=\alpha+\beta x$$ Notice how the equation is wrapped by two `$$`. A single `$` indicates the use of LaTeX markup and two indicates the equation should stand alone on a separate section
-
-
-```{r, "load the data"}
+```{r, "load the data", include = FALSE}
 anole <- read_csv("anole.dat.csv")
 anole.eco <- read_csv("anole.eco.csv")
 anole.tree <- read.tree("anole.tre")
 ```
 
-```{r, "join, filter, mutate to log"}
+```{r, "join, filter, mutate to log", include=FALSE}
 anole2 <- anole %>%
   left_join(anole.eco) %>%
   filter(!Ecomorph%in%c("U", "CH")) %>%
@@ -73,10 +75,15 @@ pgls.OU2 <- gls(HTotal~SVL*Ecomorph2, correlation=corMartins(0,phy=anole.tree, f
 
 ```
 
-```{r, "AIC"}
+The models' fit to the data was assessed using the AIC (Akaike Information Criterion):
+
+```{r, "AIC", echo=FALSE}
 #AIC operations
 anole.phylo.aic <- AICc(pgls.BM1, pgls.BM2, pgls.OU1, pgls.OU2)
-anole.phylow.aicw <- aicw(anole.phylo.aic$AICc)
+anole.phylow.aicw <- aicw(anole.phylo.aic$AICc) %>%
+  mutate(model = c("pgls.BM1", "pgls.BM2", "pgls.OU1", "pgls.OU2")) %>%
+  dplyr::select(model, everything())
+kable(anole.phylow.aicw, caption = "Table 1: AIC results for varying linear or allometric models")
 ```
 
 ```{r, "add residuals"}
