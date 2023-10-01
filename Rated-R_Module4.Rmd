@@ -87,6 +87,16 @@ anole.phylow.aicw <- aicw(anole.phylo.aic$AICc) %>%
   dplyr::select(model, everything())
 kable(anole.phylow.aicw, caption = "Table 1: AIC results for varying linear or allometric models")
 ```
+```{r, regression plot of log-transformed HTotal vs. SVL}
+regression_plot <- anole.log %>%
+  ggplot(aes(x = log(SVL), y = log(HTotal), color = Ecomorph2)) +
+  geom_point() +
+  geom_smooth(method = 'lm', formula = y ~ x, se = TRUE) +  # Add se = TRUE for shaded CI
+  labs(x = "log(SVL)", y = "log(HTotal)", color = "Ecomorph2") +
+  theme_minimal()
+
+print(regression_plot)
+```
 
 ```{r, "add residuals"}
 #add phylo-corrected residuals
@@ -142,13 +152,16 @@ A boxplot of phylogenetically adjusted hindlimb residuals versus anole ecomorph 
 # Author Contributions
 
 - **Jaan**:
+  - Introduction Text
+  - Project Formatting
   - Methods
-  - Results
+  - Results (Phylo Models & Kables)
 
 - **Jonah**:
-  - Introduction
+  - Introduction Image
   - Discussion
   - References
+  - Results (Regression Plot)
 
 # References
 
