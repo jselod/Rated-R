@@ -105,7 +105,7 @@ The models (pgls.BM1 and pgls.OU1) that did not include ecomorph information, on
 A boxplot of phylogenetically adjusted hindlimb residuals versus anole ecomorph showed interesting trends. It showed that some ecomorphs have more variety in their hind limb length residuals, indicating that they might have particular adaptations for movement and habitat usage. These differences within the *Anolis* genus might be an indication of selective forces connected to particular ecological niches. Additionally, potential discrepancies in the representation of species across ecomorph categories were highlighted in the table that showed the species count by ecomorph. We must take into account the possibility of biases introduced by such imbalances when interpreting our results. Our first findings opened doors for further research into the complex relationship between body size, ecomorphology, and hind limb length in *Anolis* lizards.
 
 
-## Author Contributions
+## Author Contributions:
 
 - **Jaan**:
   - Introduction Text
@@ -122,4 +122,4 @@ A boxplot of phylogenetically adjusted hindlimb residuals versus anole ecomorph 
   - References
   - Results (Regression Plot)
 
-## References
+## References:
