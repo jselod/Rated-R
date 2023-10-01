@@ -34,7 +34,7 @@ In total, 46 anole species were analyzed morphologically, ecomorphologically, an
 
 The phylogenetic tree of *Anolis* species was obtained from @poe2017aphylogenetic to perform phylogenetic generalized least squares, while the species morphological and ecological data came from @hagey2017there.
 
-Linear models follow the format $HTotal=SVL x+\beta$.
+Linear models follow the format $HTotal=\alpha*SVL +\beta$.
 Non-linear allometric models follow the format $HTotal=\alpha*SVL^\beta$.
 
 
